@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Injective区块链核心特色卡片组</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        injective: {
+                            primary: '#1A56DB', // 主色调：深蓝色
+                            secondary: '#0694A2', // 辅助色：青色
+                            accent: '#3F83F8', // 强调色：亮蓝色
+                            dark: '#0F172A', // 深色背景
+                            light: '#EFF6FF', // 浅色背景
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-in-out',
+                        'slide-up-stagger': 'slideUp 0.6s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(40px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 10px rgba(63, 131, 248, 0.3)' },
+                            '100%': { boxShadow: '0 0 20px rgba(63, 131, 248, 0.6)' },
+                        },
+                    },
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .card-hover {
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                cursor: pointer;
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+                perspective: 1000px;
+            }
+            .card-hover:hover {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 25px 50px -12px rgba(63, 131, 248, 0.3), 0 15px 30px -10px rgba(63, 131, 248, 0.2);
+                border-color: rgba(63, 131, 248, 0.6);
+            }
+            .card-hover:active {
+                transform: translateY(-4px) scale(0.98);
+                transition: all 0.1s ease;
+            }
+            .card-hover:hover .card-icon {
+                background-color: rgba(63, 131, 248, 0.2);
+                transform: scale(1.15) rotate(5deg);
+                box-shadow: 0 0 20px rgba(63, 131, 248, 0.3);
+            }
+            .card-hover:hover .card-icon i {
+                color: #60A5FA;
+                transform: rotate(-5deg);
+            }
+            .card-hover:hover h3 {
+                color: #60A5FA;
+                transform: translateX(5px);
+            }
+            .card-hover:hover p {
+                color: #E0F2FE;
+            }
+            .card-hover:hover .flex.items-center {
+                transform: translateX(8px);
+            }
+            .card-icon {
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .card-hover h3 {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .card-hover p {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .card-hover .flex.items-center {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .card-hover .card-icon i {
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .text-gradient {
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                background-image: linear-gradient(90deg, #3B82F6, #60A5FA);
+            }
+            .modal-backdrop {
+                backdrop-filter: blur(5px);
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+            .modal-content {
+                background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+                border: 1px solid rgba(63, 131, 248, 0.3);
+            }
+            .dark-bg {
+                background: #0F172A;
+            }
+            .card-shadow {
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            }
+            .event-badge {
+                background: linear-gradient(135deg, #3B82F6, #60A5FA);
+                border-radius: 9999px;
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+                font-weight: 600;
+                color: white;
+                animation: float 6s ease-in-out infinite;
+            }
+            .text-balance {
+                text-wrap: balance;
+            }
+            .button-hover {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .button-hover:active {
+                transform: scale(0.95);
+            }
+            .bg-ninja-break {
+                background: radial-gradient(circle at 50% 50%, #0F172A 0%, #1E293B 50%, #0F172A 100%);
+                position: relative;
+                overflow: hidden;
+            }
+            .bg-ninja-break::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: 
+                    radial-gradient(circle at 20% 30%, rgba(63, 131, 248, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(6, 148, 162, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 80%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
+                    linear-gradient(45deg, transparent 49%, rgba(63, 131, 248, 0.1) 50%, transparent 51%),
+                    linear-gradient(-45deg, transparent 49%, rgba(6, 148, 162, 0.1) 50%, transparent 51%);
+                background-size: 100% 100%, 100% 100%, 100% 100%, 100px 100px, 100px 100px;
+                animation: float 20s ease-in-out infinite;
+                z-index: -1;
+            }
+            .bg-ninja-break::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><path d="M100 20L115.47 58.78L158.78 69.28L130.9 105.11L138.16 149.47L100 131.55L61.84 149.47L69.1 105.11L41.22 69.28L84.53 58.78z" fill="none" stroke="rgba(63, 131, 248, 0.3)" stroke-width="1"/><path d="M100 40L110.23 71.79L139.39 78.15L120.45 108.56L124.68 139.68L100 125.7L75.32 139.68L79.55 108.56L60.61 78.15L89.77 71.79z" fill="none" stroke="rgba(6, 148, 162, 0.3)" stroke-width="1"/><circle cx="100" cy="100" r="5" fill="rgba(63, 131, 248, 0.5)"/></svg>');
+                background-size: 200px 200px;
+                opacity: 0.2;
+                animation: rotate 30s linear infinite;
+                z-index: -1;
+            }
+            @keyframes float {
+                0%, 100% { transform: translate(0, 0) scale(1); }
+                33% { transform: translate(10px, -10px) scale(1.02); }
+                66% { transform: translate(-10px, 10px) scale(0.98); }
+            }
+            @keyframes rotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+        }
+    </style>
+</head>
+<body class="bg-ninja-break min-h-screen text-gray-200">
+    <div class="container mx-auto px-4 py-16 relative">
+        <!-- 背景渐变叠加层 -->
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm pointer-events-none"></div>
+        <!-- 标题部分 -->
+        <div class="text-center mb-12 relative z-10">
+            <div class="event-badge inline-block mb-6">
+                Ninja Break - Chill Building Weeks
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white drop-shadow-lg">
+                <span class="text-gradient">Injective</span> 区块链核心特色
+            </h1>
+            <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto backdrop-blur-sm subtitle">
+                    高速且具备互操作性的第一层区块链，专为构建顶级Web3应用而优化
+                </p>
+        </div>
+
+        <!-- 卡片组 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10 max-w-7xl mx-auto">
+            <!-- 卡片1：高速高性能的链上交易处理能力 -->
+            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 card-hover card-shadow" onclick="openModal('speed')">
+                <div class="flex items-start space-x-4">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-blue-500/10 card-icon">
+                        <i class="fa fa-tachometer text-xl text-blue-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold mb-2 text-white">高速高性能</h3>
+                        <p class="text-gray-300 text-sm mb-4 text-balance">亚秒级交易确认，支持数万TPS的高吞吐量</p>
+                        <div class="space-y-1">
+                            <div class="flex items-center space-x-2 text-blue-400 text-xs">
+                                <i class="fa fa-tachometer"></i>
+                                <span>>10,000 TPS</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-blue-400 text-xs">
+                                <i class="fa fa-clock-o"></i>
+                                <span>亚秒级确认</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 卡片2：强大的跨链互操作性解决方案 -->
+            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 card-hover card-shadow" onclick="openModal('interoperability')">
+                <div class="flex items-start space-x-4">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-blue-500/10">
+                        <i class="fa fa-link text-xl text-blue-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold mb-2 text-white">跨链互操作性</h3>
+                        <p class="text-gray-300 text-sm mb-4 text-balance">无缝连接Cosmos、以太坊等主流区块链，实现资产和数据的自由流通</p>
+                        <div class="space-y-1">
+                            <div class="flex items-center space-x-2 text-blue-400 text-xs">
+                                <i class="fa fa-link"></i>
+                                <span>IBC协议支持</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-blue-400 text-xs">
+                                <i class="fa fa-globe"></i>
+                                <span>多链资产桥接</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 卡片3：完整的去中心化基础设施组件 -->
+            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 card-hover card-shadow" onclick="openModal('infrastructure')">
+                <div class="flex items-start space-x-4">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-blue-500/10">
+                        <i class="fa fa-shield text-xl text-blue-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold mb-2 text-white">去中心化基础设施</h3>
+                        <p class="text-gray-300 text-sm mb-4 text-balance">提供完整的DeFi组件，包括去中心化交易所、预言机、借贷协议等</p>
+                        <div class="space-y-1">
+                            <div class="flex items-center space-x-2 text-blue-400 text-xs">
+                                <i class="fa fa-shield"></i>
+                                <span>完全去中心化</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-blue-400 text-xs">
+                                <i class="fa fa-code-fork"></i>
+                                <span>社区治理</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 卡片4：多智能合约环境支持 -->
+            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 card-hover card-shadow" onclick="openModal('smart-contracts')">
+                <div class="flex items-start space-x-4">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-blue-500/10">
+                        <i class="fa fa-file-code-o text-xl text-blue-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold mb-2 text-white">多智能合约环境</h3>
+                        <p class="text-gray-300 text-sm mb-4 text-balance">同时支持CosmWasm和EVM，为开发者提供灵活的智能合约开发选择</p>
+                        <div class="space-y-1">
+                            <div class="flex items-center space-x-2 text-blue-400 text-xs">
+                                <i class="fa fa-file-code-o"></i>
+                                <span>CosmWasm + EVM</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-blue-400 text-xs">
+                                <i class="fa fa-language"></i>
+                                <span>Rust + Solidity</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 卡片5：开发者友好的即插即用型工具套件 -->
+            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 card-hover card-shadow" onclick="openModal('developer-tools')">
+                <div class="flex items-start space-x-4">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-blue-500/10">
+                        <i class="fa fa-rocket text-xl text-blue-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold mb-2 text-white">开发者工具套件</h3>
+                        <p class="text-gray-300 text-sm mb-4 text-balance">提供SDK、API、前端组件等全套开发工具，简化开发流程</p>
+                        <div class="space-y-1">
+                            <div class="flex items-center space-x-2 text-blue-400 text-xs">
+                                <i class="fa fa-rocket"></i>
+                                <span>快速开发</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-blue-400 text-xs">
+                                <i class="fa fa-book"></i>
+                                <span>完善文档</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 卡片6：专为金融应用优化的区块链架构 -->
+            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 card-hover card-shadow" onclick="openModal('finance')">
+                <div class="flex items-start space-x-4">
+                    <div class="flex items-center justify-center w-12 h-12 rounded-lg bg-blue-500/10">
+                        <i class="fa fa-bank text-xl text-blue-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold mb-2 text-white">金融级架构</h3>
+                        <p class="text-gray-300 text-sm mb-4 text-balance">专为金融应用场景优化，提供高性能、低延迟、安全可靠的交易环境</p>
+                        <div class="space-y-1">
+                            <div class="flex items-center space-x-2 text-blue-400 text-xs">
+                                <i class="fa fa-lock"></i>
+                                <span>金融级安全</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-blue-400 text-xs">
+                                <i class="fa fa-bank"></i>
+                                <span>DeFi优先</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部信息 -->
+        <div class="text-center mt-16 text-gray-400">
+            <p>© 2024 Injective区块链 | 构建未来金融的基础设施</p>
+        </div>
+    </div>
+
+    <!-- 模态框 -->
+    <div id="modal" class="fixed inset-0 modal-backdrop z-50 hidden items-center justify-center animate-fade-in">
+        <div class="modal-content rounded-2xl p-8 max-w-2xl w-full mx-4 animate-slide-up">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="modal-title" class="text-3xl font-bold text-gradient"></h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-2xl">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+            <div id="modal-content" class="text-gray-300 space-y-4"></div>
+            <div class="mt-8 flex justify-end">
+                <button onclick="closeModal()" class="px-6 py-2 bg-injective-primary hover:bg-injective-primary/80 rounded-full transition-colors">
+                    关闭
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 页面加载完成后执行动画
+        document.addEventListener('DOMContentLoaded', function() {
+            // 标题动画
+            const title = document.querySelector('h1');
+            const subtitle = document.querySelector('.subtitle');
+            const badge = document.querySelector('.event-badge');
+            
+            // 为标题和副标题添加动画
+            setTimeout(() => {
+                title.classList.add('animate-fade-in');
+                title.style.opacity = '1';
+            }, 100);
+            
+            setTimeout(() => {
+                subtitle.classList.add('animate-fade-in');
+                subtitle.style.opacity = '1';
+            }, 300);
+            
+            // 卡片交错入场动画
+            const cards = document.querySelectorAll('.card-hover');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0) scale(1)';
+                    
+                    // 为卡片内部元素添加顺序动画
+                    const cardElements = card.querySelectorAll('.card-icon, h3, p, .flex.items-center');
+                    cardElements.forEach((element, elemIndex) => {
+                        setTimeout(() => {
+                            element.style.opacity = '1';
+                            element.style.transform = 'translateY(0) rotate(0) scale(1)';
+                        }, 100 + (elemIndex * 80));
+                    });
+                }, 500 + (index * 150));
+            });
+        });
+        
+        // 为卡片内部元素添加初始状态
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card-hover');
+            cards.forEach(card => {
+                const cardElements = card.querySelectorAll('.card-icon, h3, p, .flex.items-center');
+                cardElements.forEach((element, index) => {
+                    element.style.opacity = '0.8';
+                    element.style.transform = 'translateY(10px)';
+                    element.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                });
+            });
+        });
+
+        // 模态框内容数据
+        const modalData = {
+            speed: {
+                title: "高速高性能",
+                content: `
+                    <p>Injective区块链采用创新的共识机制，实现了行业领先的交易处理能力：</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>支持超过10,000 TPS的高吞吐量，能够处理海量交易请求</li>
+                        <li>亚秒级交易确认时间，提供实时交易体验</li>
+                        <li>优化的区块结构和交易处理算法，确保网络高效运行</li>
+                        <li>低交易费用，适合高频交易场景</li>
+                        <li>可扩展性设计，能够随着网络需求增长而扩展</li>
+                    </ul>
+                    <div class="mt-6 p-4 bg-injective-primary/10 rounded-lg border border-injective-primary/30">
+                        <h4 class="font-bold text-injective-accent mb-2">技术亮点</h4>
+                        <p>Injective通过分层架构和并行处理技术，解决了区块链领域的 scalability trilemma（可扩展性三元悖论），在保持去中心化和安全性的同时，实现了高性能。</p>
+                    </div>
+                `
+            },
+            interoperability: {
+                title: "跨链互操作性",
+                content: `
+                    <p>Injective区块链构建了强大的跨链互操作性解决方案，实现了不同区块链网络之间的无缝连接：</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>原生支持IBC（跨区块链通信）协议，与Cosmos生态系统深度集成</li>
+                        <li>通过桥接技术连接以太坊、比特币等主流区块链网络</li>
+                        <li>支持跨链资产转移和流动性共享</li>
+                        <li>统一的跨链开发接口，简化跨链应用开发</li>
+                        <li>安全的跨链验证机制，确保资产和数据的安全传输</li>
+                    </ul>
+                    <div class="mt-6 p-4 bg-injective-primary/10 rounded-lg border border-injective-primary/30">
+                        <h4 class="font-bold text-injective-accent mb-2">应用场景</h4>
+                        <p>跨链DeFi应用、跨链资产交易、跨链NFT市场、跨链游戏等，为用户提供统一的多链体验。</p>
+                    </div>
+                `
+            },
+            infrastructure: {
+                title: "去中心化基础设施",
+                content: `
+                    <p>Injective提供完整的去中心化基础设施组件，为Web3应用提供强大的底层支持：</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>去中心化交易所（DEX）基础设施，支持现货和衍生品交易</li>
+                        <li>去中心化预言机服务，提供准确的市场数据</li>
+                        <li>去中心化借贷协议，实现无抵押借贷</li>
+                        <li>去中心化治理系统，确保社区参与决策</li>
+                        <li>去中心化身份验证系统，保护用户隐私</li>
+                    </ul>
+                    <div class="mt-6 p-4 bg-injective-primary/10 rounded-lg border border-injective-primary/30">
+                        <h4 class="font-bold text-injective-accent mb-2">生态优势</h4>
+                        <p>Injective的去中心化基础设施为开发者提供了完整的工具链，无需从头构建核心组件，大大降低了开发成本和时间。</p>
+                    </div>
+                `
+            },
+            "smart-contracts": {
+                title: "多智能合约环境",
+                content: `
+                    <p>Injective区块链同时支持多种智能合约环境，为开发者提供最大的灵活性：</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>支持CosmWasm智能合约，使用Rust语言开发，提供更高的安全性和性能</li>
+                        <li>内置EVM兼容层，支持Solidity智能合约，实现以太坊生态系统的无缝迁移</li>
+                        <li>统一的智能合约部署和管理接口</li>
+                        <li>智能合约优化器，提高合约执行效率</li>
+                        <li>丰富的智能合约库和模板，加速开发过程</li>
+                    </ul>
+                    <div class="mt-6 p-4 bg-injective-primary/10 rounded-lg border border-injective-primary/30">
+                        <h4 class="font-bold text-injective-accent mb-2">开发者优势</h4>
+                        <p>开发者可以根据项目需求选择最适合的智能合约环境，或者在不同环境之间自由切换，充分利用各平台的优势。</p>
+                    </div>
+                `
+            },
+            "developer-tools": {
+                title: "开发者工具套件",
+                content: `
+                    <p>Injective为开发者提供了全面的工具套件，简化开发流程，加速应用部署：</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>多语言SDK（JavaScript、Python、Go等），支持不同开发语言</li>
+                        <li>RESTful API和WebSocket API，提供灵活的接口选择</li>
+                        <li>前端组件库，包含常用的UI组件和交互元素</li>
+                        <li>本地开发环境和测试网络，便于开发和测试</li>
+                        <li>详细的开发者文档和教程，帮助开发者快速上手</li>
+                        <li>开发者社区支持，提供技术交流和问题解答</li>
+                    </ul>
+                    <div class="mt-6 p-4 bg-injective-primary/10 rounded-lg border border-injective-primary/30">
+                        <h4 class="font-bold text-injective-accent mb-2">开发流程优化</h4>
+                        <p>Injective的开发者工具套件通过抽象复杂的底层技术，让开发者能够专注于业务逻辑的实现，大大缩短了开发周期。</p>
+                    </div>
+                `
+            },
+            finance: {
+                title: "金融级架构",
+                content: `
+                    <p>Injective区块链专为金融应用场景优化，提供了安全、可靠、高效的交易环境：</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li>金融级安全标准，采用多重安全机制保护资产和交易</li>
+                        <li>低延迟交易处理，满足高频交易需求</li>
+                        <li>高并发处理能力，支持市场高峰期的交易流量</li>
+                        <li>透明的交易执行机制，确保公平性和可预测性</li>
+                        <li>合规性设计，支持KYC/AML等金融监管要求</li>
+                        <li>金融级数据一致性和可靠性保证</li>
+                    </ul>
+                    <div class="mt-6 p-4 bg-injective-primary/10 rounded-lg border border-injective-primary/30">
+                        <h4 class="font-bold text-injective-accent mb-2">金融应用场景</h4>
+                        <p>去中心化交易所、衍生品交易平台、借贷协议、资产管理、保险等金融应用都可以在Injective上构建，享受金融级的性能和安全保障。</p>
+                    </div>
+                `
+            }
+        };
+
+        // 打开模态框
+        function openModal(id) {
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalContent = document.getElementById('modal-content');
+            
+            modalTitle.textContent = modalData[id].title;
+            modalContent.innerHTML = modalData[id].content;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            
+            // 为模态框内容添加动画
+            const modalContentItems = modalContent.querySelectorAll('*');
+            modalContentItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    item.style.transition = 'all 0.3s ease-out ' + (index * 50) + 'ms';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 点击模态框背景关闭
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // ESC键关闭模态框
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // 按钮点击反馈
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+                const button = e.target.tagName === 'BUTTON' ? e.target : e.target.closest('button');
+                button.classList.add('scale-95');
+                setTimeout(() => {
+                    button.classList.remove('scale-95');
+                }, 150);
+            }
+        });
+    </script>
+</body>
+</html>
